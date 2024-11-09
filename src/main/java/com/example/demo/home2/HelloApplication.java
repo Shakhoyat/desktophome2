@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,20 +15,22 @@ import javafx.stage.Stage;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage)  {
-        VBox root = new VBox();
-       root.setAlignment(Pos.CENTER);
-       root.setSpacing(10);
-       Label label = new Label("Click the Button");
-       Button button = new Button("Click me");
-       button.setPrefWidth(100);
-       button.setPadding(new Insets(10, 10, 10, 40));
-       root.getChildren().addAll(label, button);
-       Scene scene = new Scene(root,500,450);
+        Group group = new Group();
+        Button one=new Button("OneOneeee");
+        Button two=new Button("Two");
+        one.setLayoutX(15);
+        one.setLayoutY(15);
+        two.layoutXProperty().bind(one.layoutXProperty().add(one.widthProperty().add(10)));
+        two.layoutYProperty().bind(one.layoutYProperty());
+        group.getChildren().addAll(one,two);
+        Scene scene=new Scene(group,300,300);
+        stage.setTitle("Group layout Example");
         stage.setScene(scene);
-        stage.setTitle("Event");
         stage.show();
  }
 
- public static void main(String[] args) {launch();}
+ public static void main(String[] args) {
+        launch();
+    }
 
 }
