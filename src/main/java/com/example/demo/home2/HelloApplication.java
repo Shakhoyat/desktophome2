@@ -1,6 +1,7 @@
 package com.example.demo.home2;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,6 +11,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
+    private static void handle(ActionEvent event) {
+        System.out.println("UI is now Blocked");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void init() throws Exception {
         super.init();
@@ -28,12 +38,14 @@ public class HelloApplication extends Application {
         Label text=new Label("Hello World");
         Button button=new Button("Click me");
         button.setOnAction(event ->text.setText("Welcome on Board"));
-        root.getChildren().addAll(text,button);
+        Button button2=new Button("Blocked");
+        button2.setOnAction(HelloApplication::handle);
+        root.getChildren().addAll(text,button,button2);
         Scene scene=new Scene(root,350,300);
         stage.setScene(scene);
         stage.setTitle("Hello StageTitle");
         stage.show();
- } public static void main(String[] args) {
-launch();
-}
+ }
+ public static void main(String[] args) {launch();}
+
 }
