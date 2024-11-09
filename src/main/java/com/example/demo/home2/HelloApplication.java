@@ -1,6 +1,7 @@
 package com.example.demo.home2;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -40,7 +41,9 @@ public class HelloApplication extends Application {
         button.setOnAction(event ->text.setText("Welcome on Board"));
         Button button2=new Button("Blocked");
         button2.setOnAction(HelloApplication::handle);
-        root.getChildren().addAll(text,button,button2);
+        Button button1=new Button("Exit explicitly");
+        button1.setOnAction(event -> Platform.exit());
+        root.getChildren().addAll(text,button,button1,button2);
         Scene scene=new Scene(root,350,300);
         stage.setScene(scene);
         stage.setTitle("Hello StageTitle");
