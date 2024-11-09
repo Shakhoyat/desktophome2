@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -22,6 +23,8 @@ public class HelloApplication extends Application {
         one.setLayoutY(15);
         two.layoutXProperty().bind(one.layoutXProperty().add(one.widthProperty().add(10)));
         two.layoutYProperty().bind(one.layoutYProperty());
+        group.setEffect(new DropShadow());
+        group.setRotate(10);
         group.getChildren().addAll(one,two);
         Scene scene=new Scene(group,300,300);
         stage.setTitle("Group layout Example");
