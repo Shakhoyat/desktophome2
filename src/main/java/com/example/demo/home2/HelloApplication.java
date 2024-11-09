@@ -31,6 +31,7 @@ public class HelloApplication extends Application {
     }
     @Override
     public void start(Stage stage)  {
+        Platform.setImplicitExit(false);
         System.out.println(Thread.currentThread().getName());
         VBox root = new VBox();
         root.setAlignment(Pos.CENTER);
@@ -49,6 +50,11 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello StageTitle");
         stage.show();
  }
+// @Override
+// public void stop() throws Exception {
+//     System.out.println(Thread.currentThread().getName());
+//     System.out.println("After closing the file ");
+// }
  public static void main(String[] args) {launch();}
 
 }
