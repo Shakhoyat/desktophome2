@@ -11,7 +11,16 @@ import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
     @Override
+    public void init() throws Exception {
+        super.init();
+        System.out.println("Before the file starts");
+        System.out.println(Thread.currentThread().getName());
+        Thread.sleep(5000);
+        System.out.println("After the file starts");
+    }
+    @Override
     public void start(Stage stage)  {
+        System.out.println(Thread.currentThread().getName());
         VBox root = new VBox();
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(25,25,20,20));
